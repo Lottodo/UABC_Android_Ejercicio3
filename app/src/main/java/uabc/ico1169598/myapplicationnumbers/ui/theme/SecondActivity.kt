@@ -3,6 +3,7 @@ package uabc.ico1169598.myapplicationnumbers.ui.theme
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +24,9 @@ class SecondActivity : ComponentActivity() {
 
     private var numberOne by mutableStateOf(0)
     private var numberTwo by mutableStateOf(0)
+    private var numberThree by mutableStateOf(0)
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,16 +41,20 @@ class SecondActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(text = "Result")
-                    Text(text = "$numberOne + $numberTwo = $result")
+                    Text(text = "$numberOne × $numberTwo = $result")
+                    Text(text = "\nYour answer: $numberThree")
+
                 }
             }
         }
+
     }
 
     private fun addNumbers(): Int {
         numberOne = intent.getIntExtra("numberOne",0)
         numberTwo = intent.getIntExtra("numberTwo",0)
-        return numberOne+numberTwo
+        numberThree = intent.getIntExtra("numberThree",0)
+        return numberOne*numberTwo
     }
 
 }
